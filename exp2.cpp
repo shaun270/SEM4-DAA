@@ -82,23 +82,20 @@ int main()
     int n=100000;
 
     for(int i=100;i<=n;i+=100){
-        int arr[n],b[n];
-        for(int i=0;i<n;i++){
-            arr[i]=rand()%100;
+        int arr[i],b[i];
+        for(int j=0;j<i;j++){
+            arr[j]=rand()%i;
         }
-        copy(arr,arr+n,b);
+        copy(arr,arr+i,b);
         auto start = chrono::high_resolution_clock::now();
-        merge_sort(arr,0,n-1);
+        merge_sort(arr,0,i-1);
         auto end = chrono::high_resolution_clock::now();
-        cout<<"\n"<<n<<"\t"<<chrono::duration_cast<chrono::nanoseconds>(end - start).count()<<"\t";
+        cout<<"\n"<<i<<"\t"<<chrono::duration_cast<chrono::microseconds>(end - start).count()<<"\t";
         start = chrono::high_resolution_clock::now();
-        quick(b,0,n-1);
+        quick(b,0,i-1);
         end = chrono::high_resolution_clock::now();
-        cout<<chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+        cout<<chrono::duration_cast<chrono::microseconds>(end - start).count();
     }
     
-    
-    
-
     return 0;
 }
